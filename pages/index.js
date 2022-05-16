@@ -1,4 +1,3 @@
-import { Checkbox } from "@mui/material";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import DeleteSVG from "../components/deleteSVG";
@@ -11,7 +10,6 @@ export default function index() {
     const [getCompletedTodosFromLocalStorage, setGetCompletedTodosFromLocalStorage] = useState('');
     const [newToDo, setNewToDo] = useState('');
     const [inputValue, setInputValue] = useState('');
-    const [getCurrentDateAndTime, setGetCurrentDateAndTime] = useState('');
 
     useEffect(() => {
         var previousTodos = localStorage.getItem('storedTodos');
