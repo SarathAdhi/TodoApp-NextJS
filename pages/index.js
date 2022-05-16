@@ -5,7 +5,7 @@ import EditSVG from "../components/editSVG";
 import TickSVG from '../components/tickSVG'
 
 
-export default function index() {
+export default function Index() {
     const [getTodosFromLocalStorage, SetGetTodosFromLocalStorage] = useState('');
     const [getCompletedTodosFromLocalStorage, SetGetCompletedTodosFromLocalStorage] = useState('');
     const [newToDo, SetNewToDo] = useState('');
