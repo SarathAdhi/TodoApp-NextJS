@@ -6,23 +6,23 @@ import TickSVG from '../components/tickSVG'
 
 
 export default function index() {
-    const [getTodosFromLocalStorage, setGetTodosFromLocalStorage] = useState('');
-    const [getCompletedTodosFromLocalStorage, setGetCompletedTodosFromLocalStorage] = useState('');
-    const [newToDo, setNewToDo] = useState('');
-    const [inputValue, setInputValue] = useState('');
+    const [getTodosFromLocalStorage, SetGetTodosFromLocalStorage] = useState('');
+    const [getCompletedTodosFromLocalStorage, SetGetCompletedTodosFromLocalStorage] = useState('');
+    const [newToDo, SetNewToDo] = useState('');
+    const [inputValue, SetInputValue] = useState('');
 
     useEffect(() => {
         var previousTodos = localStorage.getItem('storedTodos');
         var previousCompletedTodos = localStorage.getItem('storedCompletedTodos');
         if (previousTodos)
-            setGetTodosFromLocalStorage(JSON.parse(previousTodos))
+            SetGetTodosFromLocalStorage(JSON.parse(previousTodos))
         if (previousCompletedTodos)
-            setGetCompletedTodosFromLocalStorage(JSON.parse(previousCompletedTodos))
+            SetGetCompletedTodosFromLocalStorage(JSON.parse(previousCompletedTodos))
     }, [])
 
     function clearAllTodos() {
         localStorage.setItem('storedTodos', '');
-        setGetTodosFromLocalStorage('')
+        SetGetTodosFromLocalStorage('')
     }
 
     function deleteSelectedTodo(id) {
@@ -30,7 +30,7 @@ export default function index() {
         previousTodos = JSON.parse(previousTodos)
         previousTodos = previousTodos.filter((item) => item.id !== id);
         localStorage.setItem('storedTodos', JSON.stringify(previousTodos));
-        setGetTodosFromLocalStorage(previousTodos);
+        SetGetTodosFromLocalStorage(previousTodos);
     }
 
     function addTodosToList() {
@@ -51,7 +51,7 @@ export default function index() {
             previouslyStoredTodos = previouslyStoredTodos.sort((a, b) => b.id - a.id);
 
             localStorage.setItem('storedTodos', JSON.stringify(previouslyStoredTodos));
-            setGetTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedTodos')));
+            SetGetTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedTodos')));
 
         } else {
             var newObject = [{
@@ -61,7 +61,7 @@ export default function index() {
                 title: newToDo
             }]
             localStorage.setItem('storedTodos', JSON.stringify(newObject));
-            setGetTodosFromLocalStorage(newObject)
+            SetGetTodosFromLocalStorage(newObject)
         }
     }
 
@@ -78,7 +78,7 @@ export default function index() {
             }
             previouslyStoredCompletedTodos.push(newObject)
             localStorage.setItem('storedCompletedTodos', JSON.stringify(previouslyStoredCompletedTodos));
-            setGetCompletedTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedCompletedTodos')));
+            SetGetCompletedTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedCompletedTodos')));
 
         } else {
             var newObject = [{
@@ -89,7 +89,7 @@ export default function index() {
                 title: title
             }]
             localStorage.setItem('storedCompletedTodos', JSON.stringify(newObject));
-            setGetCompletedTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedCompletedTodos')));
+            SetGetCompletedTodosFromLocalStorage(JSON.parse(localStorage.getItem('storedCompletedTodos')));
         }
         deleteSelectedTodo(id)
     }
@@ -145,12 +145,12 @@ export default function index() {
                 <div className="fixed w-11/12 sm:w-96 bottom-5 bg-orange-600 flex justify-center items-center rounded-lg">
                     <input type='text' value={inputValue} placeholder="Enter the TODOS.." className="w-11/12 sm:w-96 rounded-l-lg py-2 px-2"
                         onChange={(e) => {
-                            setInputValue(e.target.value)
-                            setNewToDo(e.target.value)
+                            SetInputValue(e.target.value)
+                            SetNewToDo(e.target.value)
                         }} />
                     <button className="ml-2 mr-2"
                         onClick={() => {
-                            setInputValue('')
+                            SetInputValue('')
                             addTodosToList();
                         }}
                     >
