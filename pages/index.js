@@ -1,6 +1,6 @@
 import { Checkbox } from "@mui/material";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import DeleteSVG from "../components/deleteSVG";
 import EditSVG from "../components/editSVG";
 import TickSVG from '../components/tickSVG'
